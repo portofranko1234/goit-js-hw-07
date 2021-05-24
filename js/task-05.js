@@ -1,13 +1,11 @@
-const refs = {
-  input: document.querySelector("#name-input"),
-  output: document.querySelector("#name-output"),
-};
-
-refs.input.addEventListener("input", onInputChange);
-function onInputChange(event) {
-  if (event.target.value === "") {
-    refs.output.textContent = "незнакомец";
-  } else {
-    refs.output.textContent = event.currentTarget.value;
-  }
-}
+const outputElement = document.querySelector("#name-output");
+document
+  .querySelector("#name-input")
+  .addEventListener("input", ({ target: { value } }) => {
+    const trimmedValue = value.trim();
+    if (trimmedValue === "") {
+      outputElement.textContent = "незнакомец";
+    } else {
+      outputElement.textContent = trimmedValue;
+    }
+  });
